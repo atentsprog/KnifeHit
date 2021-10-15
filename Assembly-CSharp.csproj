@@ -59,6 +59,7 @@
     <Compile Include="Assets\RandomRotate.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Move.cs" />
+    <Compile Include="Assets\TargetBoard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Apple"))
+        {
+            FindObjectOfType<GameManager>().AddApplePoint();
+            Destroy(collision.gameObject);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("TargetBoard"))
@@ -26,7 +35,7 @@ public class Knife : MonoBehaviour
         }
         else
         {
-            //Debug.LogWarning(collision.transform.name, collision.transform);
+            Debug.LogWarning(collision.transform.name, collision.transform);
         }
     }
 

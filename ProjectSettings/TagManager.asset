@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TargetBoard
   - FixedKnife
+  - Apple
   layers:
   - Default
   - TransparentFX

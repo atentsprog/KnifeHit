@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     public Sprite usedKnife;    // »ç¿ëÇÑ Ä®
     public int wholeCount = 8;
     public RandomRotate targetBoard;
+    public int usedCount = 0;
+    public Text pointText;
+    public int point;
+    public Text applePointText;
+    public int applePoint;
     internal void AddPoint()
     {
         point++;
@@ -25,10 +30,12 @@ public class GameManager : MonoBehaviour
             targetBoard.StopAllCoroutines();
         }
     }
+    internal void AddApplePoint()
+    {
+        applePoint++;
+        applePointText.text = applePoint.ToString();
+    }
 
-    public int usedCount = 0;
-    public Text pointText;
-    public int point;
     private void Start()
     {
         knife.GetComponent<Move>().enabled = false;
@@ -36,8 +43,9 @@ public class GameManager : MonoBehaviour
 
         InitKnifeIcons(wholeCount);
 
-        pointText.text = "0";
+        applePointText.text = pointText.text = "0";
     }
+
 
     private void InitKnifeIcons(int wholeCount)
     {

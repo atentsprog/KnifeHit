@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         knife.GetComponent<Move>().enabled = false;
+        knife.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 
     void Update()
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
         var newItem = Instantiate(knife);
         newItem.SetActive(true);
         newItem.GetComponent<Move>().enabled = true;
+
+        newItem.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
         StartCoroutine(OnAndOffCo(knife));
     }

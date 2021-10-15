@@ -60,6 +60,7 @@
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Move.cs" />
     <Compile Include="Assets\TargetBoard.cs" />
+    <Compile Include="Assets\Knife.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

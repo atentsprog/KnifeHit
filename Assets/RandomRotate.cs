@@ -12,28 +12,25 @@ public class RandomRotate : MonoBehaviour
     public float minDuration = 3;
     public float maxDuration = 5;
     public Ease ease = Ease.InOutQuint;
-    TweenerCore<float, float, FloatOptions> handle;
-    void Rotate()
-    {
-        float startAngle = transform.eulerAngles.z;
-        float angle = startAngle + Random.Range(minAngle, maxAngle);
-        float duration = Random.Range(minDuration, maxDuration);
 
-        handle.Kill();
-        handle = DOTween.To(() => startAngle
-            , x => transform.rotation = Quaternion.Euler(0.0f, 0.0f, x), angle, duration
-            ).SetEase(ease);
-    }
+    public float delay = 0.1f;
+    private IEnumerator Start()
+    {
+        while(true)
+        { 
+            float startAngle = transform.eulerAngles.z;
+            float angle = startAngle + Random.Range(minAngle, maxAngle);
+            float duration = Random.Range(minDuration, maxDuration);
 
-    private void Start()
-    {
-        Rotate();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Rotate();
+            bool isComplete = false;
+            DOTween.To(() => startAngle
+                , x => transform.rotation = Quaternion.Euler(0.0f, 0.0f, x), angle, duration
+                ).SetEase(ease)
+                .OnComplete(() => isComplete = true);
+
+            while (isComplete == false)
+                yield return null;
+            yield return new WaitForSeconds(delay);
         }
     }
 }

@@ -857,6 +857,8 @@ MonoBehaviour:
   usedKnife: {fileID: 21300000, guid: 52ce0ff8b673c2a419ee09129239c0fd, type: 3}
   wholeCount: 8
   usedCount: 0
+  pointText: {fileID: 1890858850}
+  point: 0
 --- !u!4 &742762457
 Transform:
   m_ObjectHideFlags: 0

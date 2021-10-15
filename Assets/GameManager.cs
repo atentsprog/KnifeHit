@@ -13,14 +13,29 @@ public class GameManager : MonoBehaviour
     public Sprite useableKnife;   // 사용가능한 칼
     public Sprite usedKnife;    // 사용한 칼
     public int wholeCount = 8;
-    public int usedCount = 0;
 
+    internal void AddPoint()
+    {
+        point++;
+        pointText.text = point.ToString();
+        if(point == wholeCount)
+        {
+            //스테이지 클리어 표시
+            Debug.LogWarning("스테이지 클리어");
+        }
+    }
+
+    public int usedCount = 0;
+    public Text pointText;
+    public int point;
     private void Start()
     {
         knife.GetComponent<Move>().enabled = false;
         knife.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
         InitKnifeIcons(wholeCount);
+
+        pointText.text = "0";
     }
 
     private void InitKnifeIcons(int wholeCount)

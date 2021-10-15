@@ -11,7 +11,7 @@ public class Knife : MonoBehaviour
         {
             // 점수 증가.
             print("점수 증가");
-            // todo:스테이지 클리어인지 확인.
+            FindObjectOfType<GameManager>().AddPoint();
         }
         else if (collision.transform.CompareTag("FixedKnife"))
         {

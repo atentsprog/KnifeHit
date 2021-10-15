@@ -16,18 +16,29 @@ public class GameManager : MonoBehaviour
     public RandomRotate targetBoard;
     public int usedCount = 0;
     public Text pointText;
-    public int point;
+    public Text stageText;
+    public int point
+    {
+        get => GlobalManager.Instance.point;
+        set { GlobalManager.Instance.point = value; }
+    }
     public Text applePointText;
-    public int applePoint;
+
+    public int applePoint
+    {
+        get => GlobalManager.Instance.applePoint;
+        set { GlobalManager.Instance.applePoint = value; }
+    }
     internal void AddPoint()
     {
         point++;
         pointText.text = point.ToString();
-        if(point == wholeCount)
+        if(usedCount == wholeCount)
         {
             //스테이지 클리어 표시
             Debug.LogWarning("스테이지 클리어");
             targetBoard.StopAllCoroutines();
+            GlobalManager.Instance.StageClear();
         }
     }
     internal void AddApplePoint()
@@ -43,7 +54,10 @@ public class GameManager : MonoBehaviour
 
         InitKnifeIcons(wholeCount);
 
-        applePointText.text = pointText.text = "0";
+        applePointText.text = applePoint.ToString();
+        pointText.text = point.ToString();
+
+        stageText.text = "STAGE " + GlobalManager.Instance.stage.ToString();
     }
 
 

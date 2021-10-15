@@ -14,6 +14,7 @@ public class RandomRotate : MonoBehaviour
     public Ease ease = Ease.InOutQuint;
 
     public float delay = 0.1f;
+
     private IEnumerator Start()
     {
         while(true)
@@ -26,7 +27,8 @@ public class RandomRotate : MonoBehaviour
             DOTween.To(() => startAngle
                 , x => transform.rotation = Quaternion.Euler(0.0f, 0.0f, x), angle, duration
                 ).SetEase(ease)
-                .OnComplete(() => isComplete = true);
+                .OnComplete(() => isComplete = true)
+                .SetLink(gameObject);
 
             while (isComplete == false)
                 yield return null;

@@ -48,10 +48,6 @@ public class GameManager : MonoBehaviour
 
     private void CreateKnife()
     {
-        if(usedCount == wholeCount)
-        {
-            return;
-        }
         var newItem = Instantiate(knife);
         newItem.SetActive(true);
         newItem.GetComponent<Move>().enabled = true;
@@ -61,6 +57,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(OnAndOffCo(knife));
 
         IncreaseUsedKnifeIcon();
+        if (usedCount == wholeCount)
+        {
+            knife.SetActive(false);
+            return;
+        }
     }
 
     private float disappearTime = 0.3f;

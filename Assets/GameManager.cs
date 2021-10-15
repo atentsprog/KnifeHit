@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(Input.anyKeyDown)
             CreateKnife();
     }
 

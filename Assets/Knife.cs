@@ -21,10 +21,12 @@ public class Knife : MonoBehaviour
 
             MoveDown();
             Rotate();
+
+            Destroy(gameObject, 2);
         }
         else
         {
-            Debug.LogWarning(collision.transform.name, collision.transform);
+            //Debug.LogWarning(collision.transform.name, collision.transform);
         }
     }
 

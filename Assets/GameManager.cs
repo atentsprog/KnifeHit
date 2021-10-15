@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public Sprite useableKnife;   // 사용가능한 칼
     public Sprite usedKnife;    // 사용한 칼
     public int wholeCount = 8;
-
+    public RandomRotate targetBoard;
     internal void AddPoint()
     {
         point++;
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         {
             //스테이지 클리어 표시
             Debug.LogWarning("스테이지 클리어");
+            targetBoard.StopAllCoroutines();
         }
     }
 
